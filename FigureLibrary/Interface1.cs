@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FigureLibrary
 {
-    public class Triangle
+    interface Interface1
     {
     }
 }

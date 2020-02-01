@@ -4,5 +4,6 @@ namespace FigureLibrary
 {
     public class FigureFactory
     {
+        
     }
 }
