@@ -178,6 +178,36 @@ namespace FigureLibrary
             }
         }
 
+        public static bool operator >(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area > triangleB.Area;
+        }
+
+        public static bool operator <(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area < triangleB.Area;
+        }
+
+        public static bool operator >=(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area >= triangleB.Area;
+        }
+
+        public static bool operator <=(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area <= triangleB.Area;
+        }
+
+        public static bool operator !=(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area != triangleB.Area;
+        }
+
+        public static bool operator ==(Triangle triangleA, Triangle triangleB)
+        {
+            return triangleA.Area == triangleB.Area;
+        }
+
         /// <summary>
         /// Получить название фигуры
         /// </summary>

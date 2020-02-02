@@ -161,5 +161,32 @@ namespace FigureLibraryTest
                 Assert.AreEqual(e.Message, "Too few parameters for Triangle");
             }
         }
+
+        [TestMethod]
+        public void CompareTriangleTest()
+        {
+            Triangle triangleA = new Triangle(15, 15, 9);
+            Triangle triangleB = new Triangle(17, 15, 4);
+
+            bool result = triangleA < triangleB;
+            Assert.AreEqual(result, false);
+
+            triangleB.Set(5, 5, 5);
+            result = triangleA > triangleB;
+            Assert.AreEqual(result, true);
+
+            result = triangleA != triangleB;
+            Assert.AreEqual(result, true);
+
+            triangleA.Set(5, 5, 5);
+            result = triangleA >= triangleB;
+            Assert.AreEqual(result, true);
+
+            result = triangleA <= triangleB;
+            Assert.AreEqual(result, true);
+
+            result = triangleA == triangleB;
+            Assert.AreEqual(result, true);
+        }
     }
 }

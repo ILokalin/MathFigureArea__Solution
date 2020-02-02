@@ -123,6 +123,18 @@ namespace FigureLibraryTest
             circleA.Set(20);
             result = circleA < circleB;
             Assert.AreEqual(result, false);
+            result = circleA != circleB;
+            Assert.AreEqual(result, true);
+
+            circleB.Set(20);
+            result = circleA <= circleB;
+            Assert.AreEqual(result, true);
+            
+            result = circleA >= circleB;
+            Assert.AreEqual(result, true);
+
+            result = circleA == circleB;
+            Assert.AreEqual(result, true);
         }
     }
 }
