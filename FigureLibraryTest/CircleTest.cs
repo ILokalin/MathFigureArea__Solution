@@ -51,5 +51,22 @@ namespace FigureLibraryTest
                 Assert.AreEqual(result, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
             });
         }
+
+        [TestMethod]
+        public void circleAreayObjectTest()
+        {
+            List<SFigureTest> circleList = new List<SFigureTest>();
+
+            circleList.Add(new SFigureTest() { Sides = new double[] { 5 }, CheckArea = 78.539816 });
+            circleList.Add(new SFigureTest() { Sides = new double[] { 2 }, CheckArea = 12.566371 });
+            circleList.Add(new SFigureTest() { Sides = new double[] { 7 }, CheckArea = 153.93804 });
+
+            circleList.ForEach(delegate (SFigureTest circle)
+            {
+                var(sides, checkArea, checkName, checkWeight) = circle;
+                Circle circleTest = new Circle(sides);
+                Assert.AreEqual(circleTest.Area, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
+            });
+        }
     }
 }
