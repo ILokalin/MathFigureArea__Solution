@@ -25,6 +25,7 @@ namespace FigureLibrary
             if (CircleValidate(radius))
             {
                 Type = "circle";
+                Area = getArea(radius);
             } else
             {
                 Type = "not a circle";
