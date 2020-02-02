@@ -30,7 +30,6 @@ namespace FigureLibrary
             {
                 Type = "not a circle";
             }
-            
         }
         
         public static double getArea(double[] radius)
