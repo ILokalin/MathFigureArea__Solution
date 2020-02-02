@@ -24,6 +24,6 @@ namespace FigureLibrary
 
         double UpdateArea(double sideA, double sideB, double sideC);
 
-        bool Equals(Object obj);
+        bool Rectangular();
     }
 }

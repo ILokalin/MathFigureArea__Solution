@@ -73,6 +73,7 @@ namespace FigureLibrary
 
             if (TriangleValidate(sideList))
             {
+                figureSides = sides;
                 Type = "triangle";
                 area = AreaCalculate(sideList);
             }
@@ -176,6 +177,20 @@ namespace FigureLibrary
             }
         }
 
+        public bool Rectangular()
+        {
+            List<double> sideList = sidesToList(figureSides);
+            sideList.Sort();
+
+            if (sideList[2] == Math.Sqrt(Math.Pow(sideList[0], 2) + Math.Pow(sideList[1], 2)))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// сравнение площадей
         /// </summary>
@@ -258,6 +273,11 @@ namespace FigureLibrary
 
                 return testA.Equals(triangle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         /// <summary>

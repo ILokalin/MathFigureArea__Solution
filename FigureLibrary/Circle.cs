@@ -97,6 +97,7 @@ namespace FigureLibrary
         {
             if (CircleValidate(radius))
             {
+                figureSides = new double[] { radius };
                 Type = "circle";
                 area = getArea(radius);
             } else
@@ -197,6 +198,11 @@ namespace FigureLibrary
             }
         }
 
+        public bool Rectangular()
+        {
+            return false;
+        }
+
         /// <summary>
         /// сравнение площадей
         /// </summary>
@@ -281,6 +287,11 @@ namespace FigureLibrary
 
                 return testA.Equals(circle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         /// <summary>

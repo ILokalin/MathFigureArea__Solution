@@ -123,7 +123,40 @@ namespace FigureLibraryTest
 
             Assert.AreEqual(triangle.UpdateArea(13, 5, 14), 32.496154, 0.0001, "The area of triangle should have been equal");
             Assert.AreEqual(triangle.FigureSides.Sum(), 32, "The sum of sides should have been equal");
+        }
 
+        [TestMethod]
+        public void RectangularCheckTest()
+        {
+            IFigureFactory figureFactory = new FigureFactory();
+
+            IFigure circle = figureFactory.CreateFigure(12);
+            Assert.AreEqual(circle.Rectangular(), false, "The circle not a rectangular figure");
+
+            List<SFigureTest> figuresList = new List<SFigureTest>();
+
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 3, 4, 5}, CheckRectangular = true });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 12 }, CheckRectangular = false });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 7, 11, 5 }, CheckRectangular = false });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 5, 12, 13 }, CheckRectangular = true });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 3 }, CheckRectangular = false });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 27, 36, 45 }, CheckRectangular = true });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 14, 15, 5 }, CheckRectangular = false });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 7 }, CheckRectangular = false });
+
+            figuresList.ForEach(delegate (SFigureTest figure)
+            {
+                double[] Sides = figure.Sides;
+                string SidesFigure = "";
+
+                foreach (var side in Sides)
+                {
+                    SidesFigure += side.ToString() + " ";
+                }
+
+                IFigure testFigure = figureFactory.CreateFigure(Sides);
+                Assert.AreEqual(testFigure.Rectangular(), figure.CheckRectangular, String.Format("Rectangular status for parameter '{0}' is '{1}'", SidesFigure, figure.CheckRectangular));
+            });
         }
     }
 }
