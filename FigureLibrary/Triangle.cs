@@ -59,9 +59,12 @@ namespace FigureLibrary
         /// <param name="radius">значение радиуса double[]</param>
         public Triangle(double[] sides) 
         {
-            if (TriangleValidate(sidesToList(sides)))
+            List<double> sideList = sidesToList(sides);
+
+            if (TriangleValidate(sideList))
             {
                 Type = "triangle";
+                area = AreaCalculate(sideList);
             }
         }
 

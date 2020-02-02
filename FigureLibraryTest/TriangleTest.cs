@@ -99,8 +99,25 @@ namespace FigureLibraryTest
             Triangle testTriangle = new Triangle();
             Assert.AreEqual(testTriangle.ToString(), "triangle");
 
-            testTriangle.FigureSides = new double[] { 5, 5, 5 };
+            testTriangle.FigureSides = new double[] { 13, 5, 14 };
             Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
+        }
+
+        [TestMethod]
+        public void TriangleWorkWitObject()
+        {
+            List<SFigureTest> triangleList = new List<SFigureTest>();
+
+            triangleList.Add(new SFigureTest() { Sides = new double[] { 13, 5, 14 }, CheckArea = 32.496154 });
+            triangleList.Add(new SFigureTest() { Sides = new double[] { 5, 5, 5 }, CheckArea = 10.825318 });
+            triangleList.Add(new SFigureTest() { Sides = new double[] { 7, 3, 9 }, CheckArea = 8.785642 });
+
+            triangleList.ForEach(delegate (SFigureTest triangleTest)
+            {
+                var (sides, checkArea, checkName, checkWeight) = triangleTest;
+                Triangle testTriangle = new Triangle(sides);
+                Assert.AreEqual(testTriangle.Area, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
+            });
         }
     }
 }
