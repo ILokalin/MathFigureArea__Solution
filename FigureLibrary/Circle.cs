@@ -34,17 +34,12 @@ namespace FigureLibrary
         /// <returns>true - круг; исключение - при отрицательном радиусе</returns>
         private static bool CircleValidate(double radius)
         {
-            bool result = false;
-            if (radius >= 0)
-            {
-                result = true;
-            }
-            else
+            if (radius < 0)
             {
                 throw new NotValidateException("Radius cannot be assigned as negative value");
             }
 
-            return result;
+            return true;
         }
 
         /// <summary>
@@ -134,6 +129,11 @@ namespace FigureLibrary
         /// <param name="sideC"></param>
         public void Set(double sideA, double sideB, double sideC) {}
 
+        /// <summary>
+        /// Обновление значений сторон и возврат значения площади
+        /// </summary>
+        /// <param name="side">радиус double</param>
+        /// <returns></returns>
         public double UpdateArea(double side)
         {
             if (CircleValidate(side))
@@ -144,6 +144,11 @@ namespace FigureLibrary
             return area;
         }
 
+        /// <summary>
+        /// Обновление значений сторон и возврат значения площади
+        /// </summary>
+        /// <param name="side">радиус double[]</param>
+        /// <returns></returns>
         public double UpdateArea(double[] side)
         {
             if (CircleValidate(side[0]))
@@ -154,6 +159,13 @@ namespace FigureLibrary
             return area;
         }
 
+        /// <summary>
+        /// Вызывает исключение для Circle
+        /// </summary>
+        /// <param name="sideA"></param>
+        /// <param name="sideB"></param>
+        /// <param name="sideC"></param>
+        /// <returns></returns>
         public double UpdateArea(double sideA, double sideB, double sideC)
         {
             throw new NotValidateException("Too much parameters for Circle");

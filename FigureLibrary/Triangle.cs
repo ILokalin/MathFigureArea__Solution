@@ -103,11 +103,21 @@ namespace FigureLibrary
         /// <param name="side"></param>
         public void Set(double side) {}
 
+        /// <summary>
+        /// Вызывает исключение для Triangle
+        /// </summary>
+        /// <param name="side"></param>
+        /// <returns></returns>
         public double UpdateArea(double side)
         {
             throw new NotValidateException("Too few parameters for Triangle");
         }
 
+        /// <summary>
+        /// Обновление значений сторон и возврат значения площади
+        /// </summary>
+        /// <param name="side">значения сторон double[]</param>
+        /// <returns></returns>
         public double UpdateArea(double[] side)
         {
             List<double> sideList = sidesToList(side);
@@ -120,6 +130,13 @@ namespace FigureLibrary
             return area;
         }
 
+        /// <summary>
+        /// Обновление значений сторон и возврат значения площади
+        /// </summary>
+        /// <param name="sideA">sideA double</param>
+        /// <param name="sideB">sideB double</param>
+        /// <param name="sideC">sideC double</param>
+        /// <returns></returns>
         public double UpdateArea(double sideA, double sideB, double sideC)
         {
             List<double> sideList = sidesToList(new double[] { sideA, sideB, sideC });
