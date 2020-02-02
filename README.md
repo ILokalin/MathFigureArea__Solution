@@ -30,6 +30,39 @@
 Массив для входных параметров (принимается 0 индекс массива в качестве радиуса):<br>
 `double area = Circle.getArea(double[] radius);`
 
+**Поля для чтения**
+
+Area<double> - вычисленная площадь<br>
+Type<double> - Тип фигуры<br>
+FigureSides<double[]> - значение сторон фигуры для расчета площади<br>
+
+### Работа с классом Triangle()
+
+**Конструктор Triangl**<br>
+
+Создание пустого объекта (значение площади будет равняться 0):<br>
+`Triangle myTriangl = new Triangle();`
+
+Создание объекта и присвоение значения для трех сторон числовыми переменнфми:<br>
+`Triangl myTriangl = new Triangl(double sideA, double sideB, double sideC);`
+
+Создание объекта и присвоение значения для трех сторон через массив(применяется для расширения работы с Figure):<br>
+`Triangl myCTriangl = new Triangle(double[] sides);`
+
+**Использование статических методов класса Triangl**
+
+Расчет площади используя числовые переменные для задания сторон:<br>
+`double area =Triangl.gerArea(double sideA, double sideB, double sideC);`
+
+Массив для входных параметров:<br>
+`double area = Triangl.getArea(double[] sides);`
+
+**Поля для чтения**
+
+Area<double> - вычисленная площадь<br>
+Type<double> - Тип фигуры<br>
+FigureSides<double[]> - значение сторон фигуры для расчета площади<br>
+
 ## Описание
 Диаграмма классов
 ![class diagram](https://i.ibb.co/0CYCsSW/Untitled-Diagram-4.jpg)
