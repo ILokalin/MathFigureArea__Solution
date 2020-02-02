@@ -6,6 +6,41 @@ namespace FigureLibrary
 {
     public class Circle
     {
+        private double area;
+
+        private double[] figureSides;
+
+        /// <summary>
+        /// Функция расчета площади.
+        /// </summary>
+        /// <param name="radius">значение радиуса double</param>
+        /// <returns>площадь круга double</returns>
+        private static double AreaCalculate(double radius)
+        {
+            return Math.PI * radius * radius;
+        }
+
+        /// <summary>
+        /// Валидация круга. Если радиус больше или равен 0 - фигура соответствует.
+        /// 0 принят для сохранения возможности создания пустого объекта.
+        /// </summary>
+        /// <param name="radius">значение радиуса double</param>
+        /// <returns>true - круг; исключение - при отрицательном радиусе</returns>
+        private static bool CircleValidate(double radius)
+        {
+            bool result = false;
+            if (radius >= 0)
+            {
+                result = true;
+            }
+            else
+            {
+                throw new NotValidateException("Radius cannot be assigned as negative value");
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Тип фигуры
         /// </summary>
@@ -14,7 +49,29 @@ namespace FigureLibrary
         /// <summary>
         /// Площадь круга
         /// </summary>
-        public double Area { get; }
+        public double Area 
+        {
+            get { return area;  } 
+        }
+
+        public double[] FigureSides
+        {
+            get { return figureSides; }
+            set
+            {
+                double radius = value[0];
+
+                if (value != figureSides)
+                {
+                    if (CircleValidate(radius))
+                    {
+                        figureSides =  value;
+                        area = AreaCalculate(radius);
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         /// Конструктор Circle
@@ -36,7 +93,7 @@ namespace FigureLibrary
             if (CircleValidate(radius))
             {
                 Type = "circle";
-                Area = getArea(radius);
+                area = getArea(radius);
             } else
             {
                 Type = "not a circle";
@@ -75,36 +132,6 @@ namespace FigureLibrary
         public override string ToString()
         {
             return Type;
-        }
-
-        /// <summary>
-        /// Валидация круга. Если радиус больше или равен 0 - фигура соответствует.
-        /// 0 принят для сохранения возможности создания пустого объекта.
-        /// </summary>
-        /// <param name="radius">значение радиуса double</param>
-        /// <returns>true - круг; исключение - при отрицательном радиусе</returns>
-        private static bool CircleValidate(double radius)
-        {
-            bool result = false;
-            if (radius >= 0)
-            {
-                result = true;
-            } else
-            {
-                throw new NotValidateException("Radius cannot be assigned as negative value");
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Функция расчета площади.
-        /// </summary>
-        /// <param name="radius">значение радиуса double</param>
-        /// <returns>площадь круга double</returns>
-        private static double AreaCalculate(double radius)
-        {
-            return Math.PI * radius * radius;
         }
     }
 }

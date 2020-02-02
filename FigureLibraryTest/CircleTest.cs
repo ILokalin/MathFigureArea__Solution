@@ -68,5 +68,17 @@ namespace FigureLibraryTest
                 Assert.AreEqual(circleTest.Area, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
             });
         }
+
+        [TestMethod]
+        public void circleTestWithChangeRadius()
+        {
+            Circle testCircle = new Circle();
+            Assert.AreEqual(testCircle.Area, 0, 0.0001, String.Format("Circle with radius '{0}'", 0));
+
+            testCircle.FigureSides = new double[] { 7 };
+            Assert.AreEqual(testCircle.Area, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
+
+
+        }
     }
 }
