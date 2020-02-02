@@ -175,27 +175,31 @@ namespace FigureLibraryTest
             Triangle triangleB = new Triangle(17, 15, 4);
 
             bool result = triangleA < triangleB;
-            Assert.AreEqual(result, false);
+            Assert.AreEqual(result, false, "The area of triangle A should have been not smaller.");
 
             triangleB.Set(5, 5, 5);
             result = triangleA > triangleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of triangle A should have been larger.");
 
             result = triangleA != triangleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of triangles should have been not equal.");
 
             triangleA.Set(5, 5, 5);
             result = triangleA >= triangleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of triangles should have been equal.");
 
             result = triangleA <= triangleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of triangles should have been equal.");
 
             result = triangleA == triangleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of triangles should have been equal.");
 
             result = triangleA.Equals(triangleB);
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The sides of triangles should have been equal.");
+
+            triangleA.Set(4, 5, 4);
+            result = triangleA.Equals(triangleB);
+            Assert.AreEqual(result, false, "The area of triangles should have not been equal.");
         }
     }
 }
