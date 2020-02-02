@@ -40,9 +40,21 @@ namespace FigureLibrary
             }
         }
 
+        public static double getArea(double sideA, double sideB, double sideC)
+        {
+            return getArea(new double[] { sideA, sideB, sideC });
+        }
+
         public static double getArea(double[] sides)
         {
-            return 0;
+            List<double> sideList = sidesToList(sides);
+            if (TriangleValidate(sideList))
+            {
+                return AreaCalculate(sideList);
+            } else
+            {
+                return 0;
+            }
         }
 
         /// <summary>
@@ -52,6 +64,12 @@ namespace FigureLibrary
         public override string ToString()
         {
             return Type;
+        }
+
+        private static double AreaCalculate(List<double> sides)
+        {
+            double halfP = sides.Sum() / 2;
+            return Math.Sqrt(halfP * (halfP - sides[0]) * (halfP - sides[1]) * (halfP - sides[2]));
         }
 
         private static List<double> sidesToList(double[] sides)
@@ -101,8 +119,6 @@ namespace FigureLibrary
             {
                 throw new NotValidateException("One of the sides too long");
             }
-
-            
 
             return true;
         }
