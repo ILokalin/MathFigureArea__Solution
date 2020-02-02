@@ -101,6 +101,16 @@ namespace FigureLibraryTest
 
             testTriangle.FigureSides = new double[] { 13, 5, 14 };
             Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
+
+            testTriangle.Set(new double[] { 7, 3, 9 });
+            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
+
+            //Метод не должен менять значение сторон
+            testTriangle.Set( 5 );
+            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
+
+            testTriangle.Set(5, 5, 5);
+            Assert.AreEqual(testTriangle.Area, 10.825318, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
         }
 
         [TestMethod]

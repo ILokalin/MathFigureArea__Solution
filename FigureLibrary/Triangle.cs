@@ -78,7 +78,7 @@ namespace FigureLibrary
         }
 
         /// <summary>
-        /// Установить значения радиуса
+        /// Установить значения сторон фигуры
         /// </summary>
         /// <param name="sides">Массив со значением сторон double[]</param>
         public void Set(double[] sides)
@@ -86,6 +86,16 @@ namespace FigureLibrary
             FigureSides = sides;
         }
 
+        /// <summary>
+        /// Установить значения сторон фигуры
+        /// </summary>
+        /// <param name="sideA">sideA double</param>
+        /// <param name="sideB">sideB double</param>
+        /// <param name="sideC">sideC double</param>
+        public void Set(double sideA, double sideB, double sideC)
+        {
+            FigureSides = new double[] { sideA,sideB,sideC };
+        }
 
         /// <summary>
         /// Обеспечение совместимости с интерфесом IFigure

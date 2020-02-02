@@ -15,5 +15,7 @@ namespace FigureLibrary
         void Set(double[] sides);
 
         void Set(double side);
+
+        void Set(double sideA, double sideB, double sideC);
     }
 }

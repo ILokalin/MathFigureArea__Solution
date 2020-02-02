@@ -117,7 +117,6 @@ namespace FigureLibrary
             FigureSides = sides;
         }
 
-
         /// <summary>
         /// Установить значение радиуса
         /// </summary>
@@ -126,6 +125,14 @@ namespace FigureLibrary
         {
             FigureSides = new double[] { side };
         }
+
+        /// <summary>
+        /// Устонвка сторон фигуры. Для треугольника.
+        /// </summary>
+        /// <param name="sideA"></param>
+        /// <param name="sideB"></param>
+        /// <param name="sideC"></param>
+        public void Set(double sideA, double sideB, double sideC) {}
 
         /// <summary>
         /// Площадь круга
