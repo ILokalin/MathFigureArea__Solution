@@ -12,6 +12,6 @@ namespace FigureLibrary
 
         IFigure CreateFigure(double sideA, double sideB, double sideC);
 
-        //В случае добавления нового типа фигур, необходимо добавить перезагрузку метода
+        //В случае добавления нового типа фигур, необходимо добавить перезагрузку метода здесь
     }
 }

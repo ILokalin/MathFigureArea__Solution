@@ -94,7 +94,7 @@ namespace FigureLibraryTest
 
             IFigure testTriangle = figureFactory.CreateFigure(7, 3, 9);
             Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001);
-
+            
             testTriangle.FigureSides = new double[] { 13, 5, 14 };
             Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001);
             Assert.AreEqual(testTriangle.Type, "triangle");
