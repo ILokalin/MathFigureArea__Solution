@@ -53,19 +53,19 @@
 - 'Radius cannot be assigned as negative value' 
 
 Создание пустого объекта (значение площади будет равняться 0):<br>
-`Circle myCircle = new Circle();`
+`Circle circle = new Circle();`
 
 Создание объекта и присвоение значения для радиуса числовой переменной:<br>
-`Circle myCircle = new Circle(double radius);`
-
-Создание объекта и присвоение значения для радиуса через массив(применяется для расширения работы с Figure):<br>
-`Circle myCircle = new Circle(double[] radius);`
+`Circle circle = new Circle(double radius);`
+		c
+Созданиеcъекта и присвоение значения для радиуса через массив(применяется для расширения работы с Figure):<br>
+`Circle circle = new Circle(double[] radius);`
 
 Присвоение нового значения радиуса числовой переменной:<br>
-`myCircle.Set(double radius);`
+`circle.Set(double radius);`
 
 Присвоение нового значения радиуса через массив:<br>
-`myCircle.Set(double[] {radius});`
+`circle.Set(double[] {radius});`
 
 **Поля для чтения**
 
@@ -82,13 +82,16 @@
 Массив для входных параметров (принимается 0 индекс массива в качестве радиуса):<br>
 `double area = Circle.getArea(double[] radius);`
 
-Сравнение объектов:<br> 
-`myCircleA > myCyrcleB`<br> 
-`myCircleA < myCyrcleB`<br>
-`myCircleA >= myCyrcleB`<br>
-`myCircleA >= myCyrcleB`<br>
-`myCircleA != myCyrcleB`<br>
-`myCircleA == myCyrcleB`<br>
+Сравнение объектов по размеру площади:<br> 
+`bool circleA > cyrcleB`<br> 
+`bool circleA < cyrcleB`<br>
+`bool circleA >= cyrcleB`<br>
+`bool circleA >= cyrcleB`<br>
+`bool circleA != cyrcleB`<br>
+`bool circleA == cyrcleB`<br>
+
+Сравнение объектов по размеру радиуса:<br>
+`bool circleA.Equals(circleB)`
 
 
 ### Работа с классом Triangle()
@@ -134,13 +137,16 @@ FigureSides<double[]> - { get; set; } значение сторон фигуры
 Массив для входных параметров:<br>
 `double area = Triangl.getArea(double[] sides);`
 
-Сравнение объектов:<br> 
-`myTriangleA > myTriangleB`<br> 
-`myTriangleA < myTriangleB`<br> 
-`myTriangleA >= myTriangleB`<br> 
-`myTriangleA >= myTriangleB`<br> 
-`myTriangleA != myTriangleB`<br> 
-`myTriangleA == myTriangleB`<br> 
+Сравнение объектов по размеру площади:<br> 
+`bool triangleA > triangleB`<br> 
+`bool triangleA < triangleB`<br> 
+`bool triangleA >= triangleB`<br> 
+`bool triangleA >= triangleB`<br> 
+`bool triangleA != triangleB`<br> 
+`bool triangleA == triangleB`<br> 
+
+Сравнение объектов по размеру сторон:<br>
+`bool triangleA.Equals(triangleB)`
 
 
 
