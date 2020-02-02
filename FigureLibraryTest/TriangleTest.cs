@@ -9,7 +9,7 @@ namespace FigureLibraryTest
     public class TriangleTest
     {
         [TestMethod]
-        public void circleConstructor()
+        public void triangleConstructor()
         {
             Triangle testCircle = new Triangle();
             Assert.AreEqual(testCircle.ToString(), "triangle");
@@ -90,6 +90,17 @@ namespace FigureLibraryTest
                 double result = Triangle.getArea(sides);
                 Assert.AreEqual(result, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
             });
+        }
+
+
+        [TestMethod]
+        public void triangleLetSides()
+        {
+            Triangle testCircle = new Triangle();
+            Assert.AreEqual(testCircle.ToString(), "triangle");
+
+            testCircle.Sides = new double { 13, 5, 14 };
+            Assert.AreEqual(testCircle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
         }
     }
 }
