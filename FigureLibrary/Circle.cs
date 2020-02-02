@@ -134,6 +134,31 @@ namespace FigureLibrary
         /// <param name="sideC"></param>
         public void Set(double sideA, double sideB, double sideC) {}
 
+        public double UpdateArea(double side)
+        {
+            if (CircleValidate(side))
+            {
+                area = getArea(side);
+            }
+
+            return area;
+        }
+
+        public double UpdateArea(double[] side)
+        {
+            if (CircleValidate(side[0]))
+            {
+                area = getArea(side[0]);
+            }
+
+            return area;
+        }
+
+        public double UpdateArea(double sideA, double sideB, double sideC)
+        {
+            throw new NotValidateException("Too much parameters for Circle");
+        }
+
         /// <summary>
         /// Площадь круга
         /// </summary>

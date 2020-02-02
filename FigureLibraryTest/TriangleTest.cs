@@ -94,7 +94,7 @@ namespace FigureLibraryTest
 
 
         [TestMethod]
-        public void triangleLetSides()
+        public void triangleLetsSides()
         {
             Triangle testTriangle = new Triangle();
             Assert.AreEqual(testTriangle.ToString(), "triangle");
@@ -128,6 +128,38 @@ namespace FigureLibraryTest
                 Triangle testTriangle = new Triangle(sides);
                 Assert.AreEqual(testTriangle.Area, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
             });
+        }
+
+        [TestMethod]
+        public void TriangleUpdateAreaTest()
+        {
+            Triangle testTriangle = new Triangle();
+
+            double result = testTriangle.UpdateArea(5, 5, 5);
+            Assert.AreEqual(result, 10.825318, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
+
+            result = testTriangle.UpdateArea(new double[] { 13, 5, 14 });
+            Assert.AreEqual(result, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
+
+            try
+            {
+                result = testTriangle.UpdateArea(new double[] { 13 });
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Too few parameters for sides");
+            }
+
+            try
+            {
+                result = testTriangle.UpdateArea(13);
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Too few parameters for Triangle");
+            }
         }
     }
 }

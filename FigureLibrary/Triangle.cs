@@ -103,6 +103,35 @@ namespace FigureLibrary
         /// <param name="side"></param>
         public void Set(double side) {}
 
+        public double UpdateArea(double side)
+        {
+            throw new NotValidateException("Too few parameters for Triangle");
+        }
+
+        public double UpdateArea(double[] side)
+        {
+            List<double> sideList = sidesToList(side);
+
+            if (TriangleValidate(sideList))
+            {
+                area = AreaCalculate(sideList);
+            }
+
+            return area;
+        }
+
+        public double UpdateArea(double sideA, double sideB, double sideC)
+        {
+            List<double> sideList = sidesToList(new double[] { sideA, sideB, sideC });
+
+            if (TriangleValidate(sideList))
+            {
+                area = AreaCalculate(sideList);
+            }
+
+            return area;
+        }
+
         /// <summary>
         /// Площадь треугольника
         /// </summary>

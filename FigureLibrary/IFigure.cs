@@ -17,5 +17,11 @@ namespace FigureLibrary
         void Set(double side);
 
         void Set(double sideA, double sideB, double sideC);
+
+        double UpdateArea(double[] sides);
+
+        double UpdateArea(double side);
+
+        double UpdateArea(double sideA, double sideB, double sideC);
     }
 }

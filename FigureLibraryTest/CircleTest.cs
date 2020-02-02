@@ -79,10 +79,36 @@ namespace FigureLibraryTest
             Assert.AreEqual(testCircle.Area, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
 
             testCircle.Set(new double[] { 2 });
-            Assert.AreEqual(testCircle.Area, 12.566371, 0.0001, String.Format("Circle with radius '{0}'", 7));
+            Assert.AreEqual(testCircle.Area, 12.566371, 0.0001, String.Format("Circle with radius '{0}'", 2));
 
             testCircle.Set( 5 );
-            Assert.AreEqual(testCircle.Area, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 7));
+            Assert.AreEqual(testCircle.Area, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+        }
+
+        [TestMethod]
+        public void CircleTestUpdateArea()
+        {
+            Circle testCircle = new Circle();
+
+            double result = testCircle.UpdateArea(5);
+            Assert.AreEqual(result, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+
+            result = testCircle.UpdateArea(new double[] { 7 });
+            Assert.AreEqual(result, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
+
+            //Спорная ситуация - массив для радиуса длиной больше 1. Оставлена логика принтия первого значения
+            result = testCircle.UpdateArea(new double[] { 5, 5 });
+            Assert.AreEqual(result, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+
+            try
+            {
+                result = testCircle.UpdateArea(4, 4, 4);
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Too much parameters for Circle");
+            }
         }
     }
 }
