@@ -110,5 +110,19 @@ namespace FigureLibraryTest
                 Assert.AreEqual(e.Message, "Too much parameters for Circle");
             }
         }
+
+        [TestMethod]
+        public void CircleCompareTest()
+        {
+            Circle circleA = new Circle(5);
+            Circle circleB = new Circle(10);
+
+            bool result = circleA > circleB;
+            Assert.AreEqual(result, false);
+
+            circleA.Set(20);
+            result = circleA < circleB;
+            Assert.AreEqual(result, false);
+        }
     }
 }

@@ -196,6 +196,16 @@ namespace FigureLibrary
             }
         }
 
+        public static bool operator >(Circle circleA, Circle circleB)
+        {
+            return circleA.Area > circleB.Area;
+        }
+
+        public static bool operator <(Circle circleA, Circle circleB)
+        {
+            return circleA.Area < circleB.Area;
+        }
+
         /// <summary>
         /// Получить название фигуры
         /// </summary>

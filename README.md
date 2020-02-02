@@ -42,7 +42,6 @@
 `double figure.UpdateArea(double sideA, double sideB, double sideC)` - Для объекта Triangle. Игнорируется объектом Circle<br>
 `double figure.UpdateArea(double[] sides)` - Для объекта Triangle и Circle, при соответствии параметров<br>
 
-
 ### Работа с классом Circle()
 
 **Конструктор Circle**<br>
