@@ -6,8 +6,14 @@ namespace FigureLibrary
 {
     public class Circle : IFigure
     {
+        /// <summary>
+        /// значение площади фигуры
+        /// </summary>
         private double area;
 
+        /// <summary>
+        /// значение радиуса
+        /// </summary>
         private double[] figureSides;
 
         /// <summary>
@@ -54,6 +60,9 @@ namespace FigureLibrary
             get { return area;  } 
         }
 
+        /// <summary>
+        /// Радиус окружности double[]
+        /// </summary>
         public double[] FigureSides
         {
             get { return figureSides; }
@@ -71,7 +80,6 @@ namespace FigureLibrary
                 }
             }
         }
-
 
         /// <summary>
         /// Конструктор Circle
@@ -98,6 +106,25 @@ namespace FigureLibrary
             {
                 Type = "not a circle";
             }
+        }
+
+        /// <summary>
+        /// Установить значения сторон
+        /// </summary>
+        /// <param name="sides">Массив double[]</param>
+        public void Set(double[] sides)
+        {
+            FigureSides = sides;
+        }
+
+
+        /// <summary>
+        /// Установить значение радиуса
+        /// </summary>
+        /// <param name="side">side радиус double</param>
+        public void Set(double side)
+        {
+            FigureSides = new double[] { side };
         }
 
         /// <summary>

@@ -7,8 +7,14 @@ namespace FigureLibrary
 {
     public class Triangle : IFigure
     {
+        /// <summary>
+        /// Значение площади фигуры
+        /// </summary>
         private double area;
 
+        /// <summary>
+        /// Значение сторон фигуры
+        /// </summary>
         private double[] figureSides;
 
         /// <summary>
@@ -25,6 +31,9 @@ namespace FigureLibrary
 
         }
 
+        /// <summary>
+        /// Стороны фигуры double[]
+        /// </summary>
         public double[] FigureSides
         {
             get { return figureSides; }
@@ -67,6 +76,22 @@ namespace FigureLibrary
                 area = AreaCalculate(sideList);
             }
         }
+
+        /// <summary>
+        /// Установить значения радиуса
+        /// </summary>
+        /// <param name="sides">Массив со значением сторон double[]</param>
+        public void Set(double[] sides)
+        {
+            FigureSides = sides;
+        }
+
+
+        /// <summary>
+        /// Обеспечение совместимости с интерфесом IFigure
+        /// </summary>
+        /// <param name="side"></param>
+        public void Set(double side) {}
 
         /// <summary>
         /// Площадь треугольника

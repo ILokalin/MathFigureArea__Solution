@@ -11,5 +11,9 @@ namespace FigureLibrary
         string Type { get; }
 
         double[] FigureSides { get; set; }
+
+        void Set(double[] sides);
+
+        void Set(double side);
     }
 }
