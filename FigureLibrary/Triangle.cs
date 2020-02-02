@@ -40,11 +40,23 @@ namespace FigureLibrary
             }
         }
 
+        /// <summary>
+        /// Площадь треугольника
+        /// </summary>
+        /// <param name="sideA">сторона A double</param>
+        /// <param name="sideB">стоорна B double</param>
+        /// <param name="sideC">сторона C double</param>
+        /// <returns>площадь треугольника double</returns>
         public static double getArea(double sideA, double sideB, double sideC)
         {
             return getArea(new double[] { sideA, sideB, sideC });
         }
 
+        /// <summary>
+        /// Площадь треугольника
+        /// </summary>
+        /// <param name="sides">стороны треугольника double[]</param>
+        /// <returns>площадь треугольника double</returns>
         public static double getArea(double[] sides)
         {
             List<double> sideList = sidesToList(sides);
@@ -66,12 +78,22 @@ namespace FigureLibrary
             return Type;
         }
 
+        /// <summary>
+        /// Расчет площади треугольника
+        /// </summary>
+        /// <param name="sides">список сторон трегуольника List of double</param>
+        /// <returns>площадь треугольника double</returns>
         private static double AreaCalculate(List<double> sides)
         {
             double halfP = sides.Sum() / 2;
             return Math.Sqrt(halfP * (halfP - sides[0]) * (halfP - sides[1]) * (halfP - sides[2]));
         }
 
+        /// <summary>
+        /// Преобразование массива в список
+        /// </summary>
+        /// <param name="sides">массив сторон треугольника array of double</param>
+        /// <returns>список сторон List of double</returns>
         private static List<double> sidesToList(double[] sides)
         {
             List<double> sidesList = new List<double>();
@@ -84,11 +106,11 @@ namespace FigureLibrary
         }
 
         /// <summary>
-        /// Валидация треугольника. Фигура соответствует треугольнику если:
-        /// - нет сторон больше суммы двух других
-        /// - нет сторон с отрицательным значением
-        /// - сумма всех сторон равна 0 (создание пустого объкта)
-        /// - заданы значения для трех сторон
+        /// Валидация треугольника. Фигура соответствует треугольнику если (в соответствии с контролем):
+        /// - задано сторон не меньше 3
+        /// - звдвно сторон не больше 3
+        /// - отдельные стороны не равны 0 и не меньше (исключение, если все стороны = 0 - для создания пустого объекта)
+        /// - наибольшая сторона не больше суммы двух других
         /// </summary>
         /// <param name="radius">значение радиуса double</param>
         /// <returns>true - треугольник; исключение - при несоответствии</returns>

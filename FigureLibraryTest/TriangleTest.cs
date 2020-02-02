@@ -91,6 +91,5 @@ namespace FigureLibraryTest
                 Assert.AreEqual(result, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
             });
         }
-
     }
 }
