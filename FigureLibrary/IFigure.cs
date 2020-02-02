@@ -23,5 +23,7 @@ namespace FigureLibrary
         double UpdateArea(double side);
 
         double UpdateArea(double sideA, double sideB, double sideC);
+
+        bool Equals(Object obj);
     }
 }

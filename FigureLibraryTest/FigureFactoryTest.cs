@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FigureLibrary;
+using System.Linq;
 
 namespace FigureLibraryTest
 {
@@ -76,7 +77,7 @@ namespace FigureLibraryTest
             {
                 var (sides, checkArea, checkName, checkWeight) = figure;
                 IFigure testFigure = figureFactory.CreateFigure(sides);
-                Assert.AreEqual(testFigure.Area, checkArea, 0.0001 );
+                Assert.AreEqual(testFigure.Area, checkArea, 0.0001, "The area of circle should have been equal");
             });
         }
 
@@ -86,18 +87,43 @@ namespace FigureLibraryTest
             IFigureFactory figureFactory = new FigureFactory();
             
             IFigure testCircle = figureFactory.CreateFigure(1);
-            Assert.AreEqual(testCircle.Area, 3.14159, 0.0001);
-
+            Assert.AreEqual(testCircle.Area, 3.14159, 0.0001, "The area of circle should have been equal");
+            
             testCircle.FigureSides = new double[] { 2 };
-            Assert.AreEqual(testCircle.Area, 12.566371, 0.0001);
-            Assert.AreEqual(testCircle.Type, "circle");
+            Assert.AreEqual(testCircle.Area, 12.566371, 0.0001, "The area of circle should have been equal");
+            Assert.AreEqual(testCircle.Type, "circle", "The name of object should have been equal");
 
             IFigure testTriangle = figureFactory.CreateFigure(7, 3, 9);
-            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001);
+            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, "The area of triangle should have been equal");
             
             testTriangle.FigureSides = new double[] { 13, 5, 14 };
-            Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001);
-            Assert.AreEqual(testTriangle.Type, "triangle");
+            Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, "The area of triangle should have been equal");
+            Assert.AreEqual(testTriangle.Type, "triangle", "The name of object should have been equal");
+        }
+
+        [TestMethod]
+        public void CheckSizeUpdateFunctions()
+        {
+            IFigureFactory figureFactory = new FigureFactory();
+
+            IFigure circle = figureFactory.CreateFigure(5);
+            Assert.AreEqual(circle.Area, 78.539816, 0.0001, "The area of circle should have been equal");
+
+            circle.Set(7);
+            Assert.AreEqual(circle.Area, 153.93804, 0.0001, "The area of circle should have been equal");
+
+            Assert.AreEqual(circle.UpdateArea(2), 12.566371, 0.0001, "The area of circle should have been equal");
+            Assert.AreEqual(circle.FigureSides[0], 2, "The radius of circle should have been equal");
+
+            IFigure triangle = figureFactory.CreateFigure(5, 5, 5);
+            Assert.AreEqual(triangle.Area, 10.825318, 0.0001, "The area of triangle should have been equal");
+
+            triangle.Set(7, 3, 9);
+            Assert.AreEqual(triangle.Area, 8.785642, 0.0001, "The area of triangle should have been equal");
+
+            Assert.AreEqual(triangle.UpdateArea(13, 5, 14), 32.496154, 0.0001, "The area of triangle should have been equal");
+            Assert.AreEqual(triangle.FigureSides.Sum(), 32, "The sum of sides should have been equal");
+
         }
     }
 }

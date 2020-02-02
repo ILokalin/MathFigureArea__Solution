@@ -128,6 +128,7 @@ namespace FigureLibrary
 
             if (TriangleValidate(sideList))
             {
+                figureSides = side;
                 area = AreaCalculate(sideList);
             }
 
@@ -143,14 +144,7 @@ namespace FigureLibrary
         /// <returns></returns>
         public double UpdateArea(double sideA, double sideB, double sideC)
         {
-            List<double> sideList = sidesToList(new double[] { sideA, sideB, sideC });
-
-            if (TriangleValidate(sideList))
-            {
-                area = AreaCalculate(sideList);
-            }
-
-            return area;
+            return UpdateArea(new double[] { sideA, sideB, sideC });
         }
 
         /// <summary>

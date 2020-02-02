@@ -141,12 +141,7 @@ namespace FigureLibrary
         /// <returns></returns>
         public double UpdateArea(double side)
         {
-            if (CircleValidate(side))
-            {
-                area = getArea(side);
-            }
-
-            return area;
+            return UpdateArea(new double[] { side });
         }
 
         /// <summary>
@@ -159,6 +154,7 @@ namespace FigureLibrary
             if (CircleValidate(side[0]))
             {
                 area = getArea(side[0]);
+                figureSides = side;
             }
 
             return area;
