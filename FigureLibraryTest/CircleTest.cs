@@ -128,17 +128,17 @@ namespace FigureLibraryTest
             Circle circleB = new Circle(10);
 
             bool result = circleA > circleB;
-            Assert.AreEqual(result, false);
+            Assert.AreEqual(result, false, "The area of circle A should have not been larger");
 
             circleA.Set(20);
             result = circleA < circleB;
-            Assert.AreEqual(result, false);
+            Assert.AreEqual(result, false, "The area of circle A should have not been smaller");
             result = circleA != circleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of circle A should have not been equal");
 
             circleB.Set(20);
             result = circleA <= circleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of circle A should have been equal.");
             
             result = circleA >= circleB;
             Assert.AreEqual(result, true, "The area of circle A should have been equal.");
