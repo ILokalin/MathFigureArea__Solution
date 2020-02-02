@@ -40,7 +40,13 @@ namespace FigureLibrary
         private bool CircleValidate(double radius)
         {
             bool result = false;
-            if (radius >= 0) result = true;
+            if (radius >= 0)
+            {
+                result = true;
+            } else
+            {
+                throw new NotValidateException("Radius cannot be assigned as negative value");
+            }
 
             return result;
         }

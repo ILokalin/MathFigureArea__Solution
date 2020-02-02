@@ -19,9 +19,20 @@ namespace FigureLibraryTest
 
             Circle testCircleWithArray = new Circle(new double[] { 5 });
             Assert.AreEqual(testCircleWithArray.ToString(), "circle");
+        }
 
-            Circle testCircleNotACircle = new Circle( -5 );
-            Assert.AreEqual(testCircleNotACircle.ToString(), "not a circle");
+        [TestMethod]
+        public void circleException()
+        {
+            try
+            {
+                Circle testCircleNotACircle = new Circle(-5);
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Radius cannot be assigned as negative value");
+            }
         }
     }
 }
