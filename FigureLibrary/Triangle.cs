@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using System.Linq;
 
@@ -245,6 +246,24 @@ namespace FigureLibrary
         public static bool operator ==(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area == triangleB.Area;
+        }
+
+        /// <summary>
+        /// Сравнение сторон объектов
+        /// </summary>
+        /// <param name="obj">объект Triangle</param>
+        /// <returns>bool</returns>
+        public override bool Equals(Object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            } else {
+                Triangle triangle = (Triangle)obj;
+                IStructuralEquatable testA = this.FigureSides;
+
+                return testA.Equals(triangle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
+            }
         }
 
         /// <summary>

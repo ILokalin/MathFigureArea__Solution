@@ -193,6 +193,9 @@ namespace FigureLibraryTest
 
             result = triangleA == triangleB;
             Assert.AreEqual(result, true);
+
+            result = triangleA.Equals(triangleB);
+            Assert.AreEqual(result, true);
         }
     }
 }

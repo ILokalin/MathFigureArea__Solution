@@ -141,10 +141,17 @@ namespace FigureLibraryTest
             Assert.AreEqual(result, true);
             
             result = circleA >= circleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of circle A should have been equal.");
 
             result = circleA == circleB;
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, true, "The area of circle A should have been equal.");
+
+            result = circleA.Equals(circleB);
+            Assert.AreEqual(result, true, "The radiuses of circles should have been equal.");
+
+            circleB.Set(10);
+            result = circleA.Equals(circleB);
+            Assert.AreEqual(result, false, "The radiuses of circles should have not been equal.");
         }
     }
 }

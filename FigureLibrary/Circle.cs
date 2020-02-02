@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
+using System.Linq;
 
 namespace FigureLibrary
 {
@@ -263,6 +265,26 @@ namespace FigureLibrary
         public static bool operator ==(Circle circleA, Circle circleB)
         {
             return circleA.Area == circleB.Area;
+        }
+
+        /// <summary>
+        /// Сравнение сторон объектов
+        /// </summary>
+        /// <param name="obj">Объект Circle</param>
+        /// <returns>bool</returns>
+        public override bool Equals(Object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Circle circle = (Circle)obj;
+                IStructuralEquatable testA = this.FigureSides;
+
+                return testA.Equals(circle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
+            }
         }
 
         /// <summary>
