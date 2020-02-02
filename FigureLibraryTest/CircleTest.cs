@@ -77,8 +77,6 @@ namespace FigureLibraryTest
 
             testCircle.FigureSides = new double[] { 7 };
             Assert.AreEqual(testCircle.Area, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
-
-
         }
     }
 }
