@@ -4,7 +4,8 @@ using System.Text;
 
 namespace FigureLibrary
 {
-    interface Interface1
+    public interface IFigure
     {
+       
     }
 }

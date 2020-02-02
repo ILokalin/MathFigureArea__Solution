@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FigureLibrary
 {
-    public class Triangle
+    public class Triangle : IFigure
     {
         private double area;
 
