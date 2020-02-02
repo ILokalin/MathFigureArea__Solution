@@ -122,12 +122,15 @@ namespace FigureLibrary
         }
 
         /// <summary>
-        /// Устонвка сторон фигуры. Для треугольника.
+        /// Вызывает исключение - слишком много параметров
         /// </summary>
         /// <param name="sideA"></param>
         /// <param name="sideB"></param>
         /// <param name="sideC"></param>
-        public void Set(double sideA, double sideB, double sideC) {}
+        public void Set(double sideA, double sideB, double sideC) 
+        {
+            throw new NotValidateException("Too many parameters for Circle");
+        }
 
         /// <summary>
         /// Обновление значений сторон и возврат значения площади
@@ -196,31 +199,67 @@ namespace FigureLibrary
             }
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator >(Circle circleA, Circle circleB)
         {
             return circleA.Area > circleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator <(Circle circleA, Circle circleB)
         {
             return circleA.Area < circleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator >=(Circle circleA, Circle circleB)
         {
             return circleA.Area >= circleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator <=(Circle circleA, Circle circleB)
         {
             return circleA.Area <= circleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator !=(Circle circleA, Circle circleB)
         {
             return circleA.Area != circleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="circleA"></param>
+        /// <param name="circleB"></param>
+        /// <returns></returns>
         public static bool operator ==(Circle circleA, Circle circleB)
         {
             return circleA.Area == circleB.Area;

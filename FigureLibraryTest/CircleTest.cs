@@ -83,6 +83,16 @@ namespace FigureLibraryTest
 
             testCircle.Set( 5 );
             Assert.AreEqual(testCircle.Area, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+
+            try
+            {
+                testCircle.Set(5, 5, 5);
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Too many parameters for Circle");
+            }
         }
 
         [TestMethod]

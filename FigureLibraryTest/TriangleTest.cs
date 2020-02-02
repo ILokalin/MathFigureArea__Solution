@@ -105,9 +105,15 @@ namespace FigureLibraryTest
             testTriangle.Set(new double[] { 7, 3, 9 });
             Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
 
-            //Метод не должен менять значение сторон
-            testTriangle.Set( 5 );
-            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
+            try
+            {
+                testTriangle.Set(5);
+                Assert.Fail("An exception should have been throw");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "Too few parameters for Triangle");
+            }
 
             testTriangle.Set(5, 5, 5);
             Assert.AreEqual(testTriangle.Area, 10.825318, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));

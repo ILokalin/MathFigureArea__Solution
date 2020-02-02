@@ -98,10 +98,13 @@ namespace FigureLibrary
         }
 
         /// <summary>
-        /// Обеспечение совместимости с интерфесом IFigure
+        /// Вызывает исключение - слишком мало парметров
         /// </summary>
         /// <param name="side"></param>
-        public void Set(double side) {}
+        public void Set(double side) 
+        {
+            throw new NotValidateException("Too few parameters for Triangle");
+        }
 
         /// <summary>
         /// Вызывает исключение для Triangle
@@ -178,31 +181,67 @@ namespace FigureLibrary
             }
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator >(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area > triangleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator <(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area < triangleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator >=(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area >= triangleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator <=(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area <= triangleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator !=(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area != triangleB.Area;
         }
 
+        /// <summary>
+        /// сравнение площадей
+        /// </summary>
+        /// <param name="triangleA"></param>
+        /// <param name="triangleB"></param>
+        /// <returns></returns>
         public static bool operator ==(Triangle triangleA, Triangle triangleB)
         {
             return triangleA.Area == triangleB.Area;
@@ -220,7 +259,7 @@ namespace FigureLibrary
         /// <summary>
         /// Расчет площади треугольника
         /// </summary>
-        /// <param name="sides">список сторон трегуольника List of double</param>
+        /// <param name="sides">список сторон треугольника List of double</param>
         /// <returns>площадь треугольника double</returns>
         private static double AreaCalculate(List<double> sides)
         {
@@ -247,7 +286,7 @@ namespace FigureLibrary
         /// <summary>
         /// Валидация треугольника. Фигура соответствует треугольнику если (в соответствии с контролем):
         /// - задано сторон не меньше 3
-        /// - звдвно сторон не больше 3
+        /// - задано сторон не более 3
         /// - отдельные стороны не равны 0 и не меньше (исключение, если все стороны = 0 - для создания пустого объекта)
         /// - наибольшая сторона не больше суммы двух других
         /// </summary>
