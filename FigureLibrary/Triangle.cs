@@ -7,6 +7,10 @@ namespace FigureLibrary
 {
     public class Triangle
     {
+        private double area;
+
+        private double[] figureSides;
+
         /// <summary>
         /// Тип фигуры
         /// </summary>
@@ -15,7 +19,28 @@ namespace FigureLibrary
         /// <summary>
         /// Площадь треугольника
         /// </summary>
-        public double Area { get; }
+        public double Area 
+        { 
+            get { return area; }
+
+        }
+
+        public double[] FigureSides
+        {
+            get { return figureSides; }
+            set
+            {
+                if (value != figureSides)
+                {
+                    List<double> sideList = sidesToList(value);
+                    if (TriangleValidate(sideList))
+                    {
+                        figureSides = value;
+                        area = AreaCalculate(sideList);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Конструктор Triangle

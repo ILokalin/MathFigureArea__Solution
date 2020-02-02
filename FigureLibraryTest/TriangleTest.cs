@@ -96,11 +96,11 @@ namespace FigureLibraryTest
         [TestMethod]
         public void triangleLetSides()
         {
-            Triangle testCircle = new Triangle();
-            Assert.AreEqual(testCircle.ToString(), "triangle");
+            Triangle testTriangle = new Triangle();
+            Assert.AreEqual(testTriangle.ToString(), "triangle");
 
-            testCircle.Sides = new double { 13, 5, 14 };
-            Assert.AreEqual(testCircle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
+            testTriangle.FigureSides = new double[] { 5, 5, 5 };
+            Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
         }
     }
 }
