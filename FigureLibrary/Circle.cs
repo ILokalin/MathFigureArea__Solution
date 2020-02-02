@@ -31,13 +31,28 @@ namespace FigureLibrary
             }
             
         }
+        
+        public static double getArea(double[] radius)
+        {
+            return getArea(radius[0]);
+        }
+
+        public static double getArea(double radius)
+        {
+            if (CircleValidate(radius))
+            {
+                return AreaCalculate(radius);
+            } else {
+                return 0;
+            }
+        }
 
         public override string ToString()
         {
             return Type;
         }
 
-        private bool CircleValidate(double radius)
+        private static bool CircleValidate(double radius)
         {
             bool result = false;
             if (radius >= 0)
@@ -49,6 +64,11 @@ namespace FigureLibrary
             }
 
             return result;
+        }
+
+        private static double AreaCalculate(double radius)
+        {
+            return Math.PI * radius * radius;
         }
     }
 }

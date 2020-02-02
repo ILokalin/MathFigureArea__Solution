@@ -4,7 +4,23 @@ using System.Text;
 
 namespace FigureLibraryTest
 {
-    class SFigureTest
+    /// <summary>
+    /// Структура для хранения фигуры и тестовых занчений
+    /// </summary>
+    public struct SFigureTest
     {
+        public double[] Sides;
+        public double CheckArea;
+
+        public string CheckName;
+        public int CheckWeight;
+
+        public void Deconstruct(out double[] sides, out double checkArea, out string checkName, out int checkWeight)
+        {
+            sides = Sides;
+            checkArea = CheckArea;
+            checkName = CheckName;
+            checkWeight = CheckWeight;
+        }
     }
 }

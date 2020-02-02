@@ -34,5 +34,22 @@ namespace FigureLibraryTest
                 Assert.AreEqual(e.Message, "Radius cannot be assigned as negative value");
             }
         }
+
+        [TestMethod]
+        public void circleAreaTest()
+        {
+            List<SFigureTest> circleList = new List<SFigureTest>();
+
+            circleList.Add(new SFigureTest() { Sides = new double[] { 5 }, CheckArea = 78.539816 });
+            circleList.Add(new SFigureTest() { Sides = new double[] { 2 }, CheckArea = 12.566371 });
+            circleList.Add(new SFigureTest() { Sides = new double[] { 7 }, CheckArea = 153.93804 });
+
+            circleList.ForEach(delegate (SFigureTest circle)
+            {
+                var (sides, checkArea, checkName, checkWeight) = circle;
+                double result = Circle.getArea(sides);
+                Assert.AreEqual(result, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
+            });
+        }
     }
 }
