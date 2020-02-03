@@ -72,7 +72,7 @@
 	figureList.ForEach(delegate (double[] figureParams)
 	{
 	    IFigure figure = figureFactory.CreateFigure(figureParams);
-		Console.WriteLn(figure.ToSting());
+		Console.WriteLine(figure.ToString());
 	});
 
 //Console will display
