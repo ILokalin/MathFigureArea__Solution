@@ -62,9 +62,8 @@
 
 **Пример использования**
 
-`
 
-	List<double[]> figureList = new List<double[]>();
+    List<double[]> figureList = new List<double[]>();
 	
 	IFigureFactory figureFactory = new FigureFactory();
 	
@@ -80,15 +79,13 @@
 	    IFigure figure = figureFactory.CreateFigure(figureParams);
 		Console.WriteLine(figure.ToString());
 	});
-
-//Console will display
-//circle	
-//circle
-//circle
-//triangle
-//triangle
-//triangle
-`
+    //Console will display
+    //circle	
+    //circle
+    //circle
+    //triangle
+    //triangle
+    //triangle
 
 <br><br>
 ### Работа с классом Circle()
