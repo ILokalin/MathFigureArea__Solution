@@ -158,5 +158,21 @@ namespace FigureLibraryTest
                 Assert.AreEqual(testFigure.Rectangular(), figure.CheckRectangular, String.Format("Rectangular status for parameter '{0}' is '{1}'", SidesFigure, figure.CheckRectangular));
             });
         }
+
+        [TestMethod]
+        public void CheckEqualsCompare()
+        {
+            IFigureFactory figureFactory = new FigureFactory();
+
+            IFigure figureA = figureFactory.CreateFigure(3, 5, 7);
+            IFigure figureB = figureFactory.CreateFigure(3, 5, 7);
+
+            bool result = figureA.Equals(figureB);
+            Assert.AreEqual(result, true, "These triangles have been is equal");
+
+            figureB.Set(4, 5, 3);
+            result = figureA.Equals(figureB);
+            Assert.AreEqual(result, false, "These triangles have been is equal");
+        }
     }
 }
