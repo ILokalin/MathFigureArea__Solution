@@ -269,7 +269,7 @@ namespace FigureLibrary
                 return false;
             } else {
                 Triangle triangle = (Triangle)obj;
-
+                
                 List<double> thisSides = sidesToList(this.FigureSides);
                 List<double> objSides = sidesToList(triangle.FigureSides);
 

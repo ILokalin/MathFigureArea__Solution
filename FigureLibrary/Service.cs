@@ -39,5 +39,16 @@ namespace FigureLibrary
                 left++;
             }
         }
+
+        public static double arraySum(double[] sumArray)
+        {
+            double result = 0;
+            foreach (var item in sumArray)
+            {
+                result += item;
+            }
+
+            return result;
+        }
     }
 }
