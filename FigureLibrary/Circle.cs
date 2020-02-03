@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Text;
-using System.Linq;
+
 
 namespace FigureLibrary
 {
@@ -65,15 +62,12 @@ namespace FigureLibrary
             get { return figureSides; }
             set
             {
-                double radius = value[0];
+                double[] radius = (double[])value;
 
-                if (value != figureSides)
+                if ((radius != figureSides) && CircleValidate(radius[0]))
                 {
-                    if (CircleValidate(radius))
-                    {
-                        figureSides =  value;
-                        area = AreaCalculate(radius);
-                    }
+                    figureSides =  value;
+                    area = AreaCalculate(radius[0]);
                 }
             }
         }
@@ -81,29 +75,22 @@ namespace FigureLibrary
         /// <summary>
         /// Конструктор Circle
         /// </summary>
-        public Circle() : this(0) {}
-
-        /// <summary>
-        /// Конструктор Circle
-        /// </summary>
-        /// <param name="radius">значение радиуса double[]</param>
-        public Circle(double[] radius) : this(radius[0]) {}
+        public Circle() : this(new double[] { 0 }) {}
 
         /// <summary>
         /// Конструктор Circle
         /// </summary>
         /// <param name="radius">значение радиуса double</param>
-        public Circle(double radius)
+        public Circle(double radius) : this(new double[] { radius }) {}
+
+        /// <summary>
+        /// Конструктор Circle
+        /// </summary>
+        /// <param name="radius">значение радиуса double[]</param>
+        public Circle(double[] radius)
         {
-            if (CircleValidate(radius))
-            {
-                figureSides = new double[] { radius };
-                Type = "circle";
-                area = getArea(radius);
-            } else
-            {
-                Type = "not a circle";
-            }
+            FigureSides = radius;
+            Type = "circle";
         }
 
         /// <summary>
@@ -152,12 +139,7 @@ namespace FigureLibrary
         /// <returns></returns>
         public double UpdateArea(double[] side)
         {
-            if (CircleValidate(side[0]))
-            {
-                area = getArea(side[0]);
-                figureSides = side;
-            }
-
+            FigureSides = side;
             return area;
         }
 
@@ -198,6 +180,10 @@ namespace FigureLibrary
             }
         }
 
+        /// <summary>
+        /// Соответствие прямоугольности
+        /// </summary>
+        /// <returns>False</returns>
         public bool Rectangular()
         {
             return false;
@@ -282,10 +268,8 @@ namespace FigureLibrary
             }
             else
             {
-                Circle circle = (Circle)obj;
-                IStructuralEquatable testA = this.FigureSides;
-
-                return testA.Equals(circle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
+                Circle otherObj = (Circle)obj;
+                return this.figureSides[0] == otherObj.figureSides[0];
             }
         }
 
