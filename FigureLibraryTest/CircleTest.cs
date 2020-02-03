@@ -1,13 +1,15 @@
+using FigureLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureLibrary;
 
 namespace FigureLibraryTest
 {
     [TestClass]
     public class CircleTest
     {
+        double Delta = 0.0001;
+
         [TestMethod]
         public void circleConstructor()
         {
@@ -47,8 +49,8 @@ namespace FigureLibraryTest
             circleList.ForEach(delegate (SFigureTest circle)
             {
                 var (sides, checkArea, checkName, checkWeight) = circle;
-                double result = Circle.getArea(sides);
-                Assert.AreEqual(result, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
+                double result = Circle.GetArea(sides);
+                Assert.AreEqual(result, checkArea, Delta, String.Format("Circle with radius '{0}'", sides[0]));
             });
         }
 
@@ -63,9 +65,9 @@ namespace FigureLibraryTest
 
             circleList.ForEach(delegate (SFigureTest circle)
             {
-                var(sides, checkArea, checkName, checkWeight) = circle;
+                var (sides, checkArea, checkName, checkWeight) = circle;
                 Circle circleTest = new Circle(sides);
-                Assert.AreEqual(circleTest.Area, checkArea, 0.0001, String.Format("Circle with radius '{0}'", sides[0]));
+                Assert.AreEqual(circleTest.Area, checkArea, Delta, String.Format("Circle with radius '{0}'", sides[0]));
             });
         }
 
@@ -73,16 +75,16 @@ namespace FigureLibraryTest
         public void circleTestWithChangeRadius()
         {
             Circle testCircle = new Circle();
-            Assert.AreEqual(testCircle.Area, 0, 0.0001, String.Format("Circle with radius '{0}'", 0));
+            Assert.AreEqual(testCircle.Area, 0, Delta, String.Format("Circle with radius '{0}'", 0));
 
             testCircle.FigureSides = new double[] { 7 };
-            Assert.AreEqual(testCircle.Area, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
+            Assert.AreEqual(testCircle.Area, 153.93804, Delta, String.Format("Circle with radius '{0}'", 7));
 
             testCircle.Set(new double[] { 2 });
-            Assert.AreEqual(testCircle.Area, 12.566371, 0.0001, String.Format("Circle with radius '{0}'", 2));
+            Assert.AreEqual(testCircle.Area, 12.566371, Delta, String.Format("Circle with radius '{0}'", 2));
 
-            testCircle.Set( 5 );
-            Assert.AreEqual(testCircle.Area, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+            testCircle.Set(5);
+            Assert.AreEqual(testCircle.Area, 78.539816, Delta, String.Format("Circle with radius '{0}'", 5));
 
             try
             {
@@ -101,14 +103,14 @@ namespace FigureLibraryTest
             Circle testCircle = new Circle();
 
             double result = testCircle.UpdateArea(5);
-            Assert.AreEqual(result, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+            Assert.AreEqual(result, 78.539816, Delta, String.Format("Circle with radius '{0}'", 5));
 
             result = testCircle.UpdateArea(new double[] { 7 });
-            Assert.AreEqual(result, 153.93804, 0.0001, String.Format("Circle with radius '{0}'", 7));
+            Assert.AreEqual(result, 153.93804, Delta, String.Format("Circle with radius '{0}'", 7));
 
             //Спорная ситуация - массив для радиуса длиной больше 1. Оставлена логика принтия первого значения
             result = testCircle.UpdateArea(new double[] { 5, 5 });
-            Assert.AreEqual(result, 78.539816, 0.0001, String.Format("Circle with radius '{0}'", 5));
+            Assert.AreEqual(result, 78.539816, Delta, String.Format("Circle with radius '{0}'", 5));
 
             try
             {
@@ -139,7 +141,7 @@ namespace FigureLibraryTest
             circleB.Set(20);
             result = circleA <= circleB;
             Assert.AreEqual(result, true, "The area of circle A should have been equal.");
-            
+
             result = circleA >= circleB;
             Assert.AreEqual(result, true, "The area of circle A should have been equal.");
 

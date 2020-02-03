@@ -24,8 +24,8 @@ namespace FigureLibrary
         /// <summary>
         /// Площадь треугольника
         /// </summary>
-        public double Area 
-        { 
+        public double Area
+        {
             get { return area; }
 
         }
@@ -66,7 +66,7 @@ namespace FigureLibrary
         /// Конструктор Triangle
         /// </summary>
         /// <param name="radius">значение радиуса double[]</param>
-        public Triangle(double[] sides) 
+        public Triangle(double[] sides)
         {
             FigureSides = sides;
             Type = "triangle";
@@ -89,14 +89,14 @@ namespace FigureLibrary
         /// <param name="sideC">sideC double</param>
         public void Set(double sideA, double sideB, double sideC)
         {
-            FigureSides = new double[] { sideA,sideB,sideC };
+            FigureSides = new double[] { sideA, sideB, sideC };
         }
 
         /// <summary>
         /// Вызывает исключение - слишком мало парметров
         /// </summary>
         /// <param name="side"></param>
-        public void Set(double side) 
+        public void Set(double side)
         {
             throw new NotValidateException("Too few parameters for Triangle");
         }
@@ -141,9 +141,9 @@ namespace FigureLibrary
         /// <param name="sideB">стоорна B double</param>
         /// <param name="sideC">сторона C double</param>
         /// <returns>площадь треугольника double</returns>
-        public static double getArea(double sideA, double sideB, double sideC)
+        public static double GetArea(double sideA, double sideB, double sideC)
         {
-            return getArea(new double[] { sideA, sideB, sideC });
+            return GetArea(new double[] { sideA, sideB, sideC });
         }
 
         /// <summary>
@@ -151,14 +151,15 @@ namespace FigureLibrary
         /// </summary>
         /// <param name="sides">стороны треугольника double[]</param>
         /// <returns>площадь треугольника double</returns>
-        public static double getArea(double[] sides)
+        public static double GetArea(double[] sides)
         {
             double[] triangleSedes = (double[])sides.Clone();
 
             if (TriangleValidate(triangleSedes))
             {
                 return AreaCalculate(triangleSedes);
-            } else
+            }
+            else
             {
                 return 0;
             }
@@ -169,7 +170,8 @@ namespace FigureLibrary
             if (figureSides[2] == Math.Sqrt(Math.Pow(figureSides[0], 2) + Math.Pow(figureSides[1], 2)))
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -251,7 +253,9 @@ namespace FigureLibrary
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
             {
                 return false;
-            } else {
+            }
+            else
+            {
                 Triangle triangle = (Triangle)obj;
 
                 IStructuralEquatable testThis = this.figureSides;
@@ -307,7 +311,7 @@ namespace FigureLibrary
 
             if (sides.Length > 3)
             {
-                throw new NotValidateException("Too many parameters for sides"); 
+                throw new NotValidateException("Too many parameters for sides");
             }
 
             foreach (var side in sides)

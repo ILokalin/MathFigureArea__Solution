@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FigureLibraryTest
+﻿namespace FigureLibraryTest
 {
     /// <summary>
     /// Структура для хранения фигуры и тестовых занчений

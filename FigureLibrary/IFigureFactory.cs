@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FigureLibrary
+﻿namespace FigureLibrary
 {
     public interface IFigureFactory
     {
@@ -12,6 +8,6 @@ namespace FigureLibrary
 
         IFigure CreateFigure(double sideA, double sideB, double sideC);
 
-        //В случае добавления нового типа фигур, необходимо добавить перезагрузку метода здесь
+        //В случае добавления нового типа фигур, необходимо добавить перегрузку метода здесь
     }
 }

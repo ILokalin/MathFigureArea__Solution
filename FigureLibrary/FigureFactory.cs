@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FigureLibrary 
+﻿namespace FigureLibrary
 {
     public class FigureFactory : IFigureFactory
     {

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FigureLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureLibrary;
+using System;
+using System.Collections.Generic;
 
 namespace FigureLibraryTest
 {
     [TestClass]
     public class TriangleTest
     {
+        double Delta = 0.0001;
+
         [TestMethod]
         public void triangleConstructor()
         {
@@ -36,7 +38,7 @@ namespace FigureLibraryTest
 
             try
             {
-                Triangle testCircleNotACircle = new Triangle(new double[] { 3, 4});
+                Triangle testCircleNotACircle = new Triangle(new double[] { 3, 4 });
                 Assert.Fail("An exception should have been throw");
             }
             catch (Exception e)
@@ -87,8 +89,8 @@ namespace FigureLibraryTest
             triangleList.ForEach(delegate (SFigureTest triangleTest)
             {
                 var (sides, checkArea, checkName, checkWeight) = triangleTest;
-                double result = Triangle.getArea(sides);
-                Assert.AreEqual(result, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
+                double result = Triangle.GetArea(sides);
+                Assert.AreEqual(result, checkArea, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
             });
         }
 
@@ -100,10 +102,10 @@ namespace FigureLibraryTest
             Assert.AreEqual(testTriangle.ToString(), "triangle");
 
             testTriangle.FigureSides = new double[] { 13, 5, 14 };
-            Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
+            Assert.AreEqual(testTriangle.Area, 32.496154, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
 
             testTriangle.Set(new double[] { 7, 3, 9 });
-            Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
+            Assert.AreEqual(testTriangle.Area, 8.785642, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", 7, 3, 9));
 
             try
             {
@@ -116,7 +118,7 @@ namespace FigureLibraryTest
             }
 
             testTriangle.Set(5, 5, 5);
-            Assert.AreEqual(testTriangle.Area, 10.825318, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
+            Assert.AreEqual(testTriangle.Area, 10.825318, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
         }
 
         [TestMethod]
@@ -132,7 +134,7 @@ namespace FigureLibraryTest
             {
                 var (sides, checkArea, checkName, checkWeight) = triangleTest;
                 Triangle testTriangle = new Triangle(sides);
-                Assert.AreEqual(testTriangle.Area, checkArea, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
+                Assert.AreEqual(testTriangle.Area, checkArea, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", sides[0], sides[1], sides[2]));
             });
         }
 
@@ -142,10 +144,10 @@ namespace FigureLibraryTest
             Triangle testTriangle = new Triangle();
 
             double result = testTriangle.UpdateArea(5, 5, 5);
-            Assert.AreEqual(result, 10.825318, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
+            Assert.AreEqual(result, 10.825318, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", 5, 5, 5));
 
             result = testTriangle.UpdateArea(new double[] { 13, 5, 14 });
-            Assert.AreEqual(result, 32.496154, 0.0001, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
+            Assert.AreEqual(result, 32.496154, Delta, String.Format("Triangle with sides '{0}, {1}, {2}' ", 13, 5, 14));
 
             try
             {

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FigureLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureLibrary;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FigureLibraryTest
@@ -85,17 +85,17 @@ namespace FigureLibraryTest
         public void СheckWithChgangeSidesList()
         {
             IFigureFactory figureFactory = new FigureFactory();
-            
+
             IFigure testCircle = figureFactory.CreateFigure(1);
             Assert.AreEqual(testCircle.Area, 3.14159, 0.0001, "The area of circle should have been equal");
-            
+
             testCircle.FigureSides = new double[] { 2 };
             Assert.AreEqual(testCircle.Area, 12.566371, 0.0001, "The area of circle should have been equal");
             Assert.AreEqual(testCircle.Type, "circle", "The name of object should have been equal");
 
             IFigure testTriangle = figureFactory.CreateFigure(7, 3, 9);
             Assert.AreEqual(testTriangle.Area, 8.785642, 0.0001, "The area of triangle should have been equal");
-            
+
             testTriangle.FigureSides = new double[] { 13, 5, 14 };
             Assert.AreEqual(testTriangle.Area, 32.496154, 0.0001, "The area of triangle should have been equal");
             Assert.AreEqual(testTriangle.Type, "triangle", "The name of object should have been equal");
@@ -135,7 +135,7 @@ namespace FigureLibraryTest
 
             List<SFigureTest> figuresList = new List<SFigureTest>();
 
-            figuresList.Add(new SFigureTest() { Sides = new double[] { 3, 4, 5}, CheckRectangular = true });
+            figuresList.Add(new SFigureTest() { Sides = new double[] { 3, 4, 5 }, CheckRectangular = true });
             figuresList.Add(new SFigureTest() { Sides = new double[] { 12 }, CheckRectangular = false });
             figuresList.Add(new SFigureTest() { Sides = new double[] { 7, 11, 5 }, CheckRectangular = false });
             figuresList.Add(new SFigureTest() { Sides = new double[] { 5, 12, 13 }, CheckRectangular = true });

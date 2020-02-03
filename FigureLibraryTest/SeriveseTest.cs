@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
+﻿using FigureLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureLibrary;
-using System.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FigureLibraryTest
 {

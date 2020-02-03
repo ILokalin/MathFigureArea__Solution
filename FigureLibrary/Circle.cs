@@ -49,9 +49,9 @@ namespace FigureLibrary
         /// <summary>
         /// Площадь круга
         /// </summary>
-        public double Area 
+        public double Area
         {
-            get { return area;  } 
+            get { return area; }
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace FigureLibrary
 
                 if ((radius != figureSides) && CircleValidate(radius[0]))
                 {
-                    figureSides =  value;
+                    figureSides = value;
                     area = AreaCalculate(radius[0]);
                 }
             }
@@ -75,13 +75,13 @@ namespace FigureLibrary
         /// <summary>
         /// Конструктор Circle
         /// </summary>
-        public Circle() : this(new double[] { 0 }) {}
+        public Circle() : this(new double[] { 0 }) { }
 
         /// <summary>
         /// Конструктор Circle
         /// </summary>
         /// <param name="radius">значение радиуса double</param>
-        public Circle(double radius) : this(new double[] { radius }) {}
+        public Circle(double radius) : this(new double[] { radius }) { }
 
         /// <summary>
         /// Конструктор Circle
@@ -117,7 +117,7 @@ namespace FigureLibrary
         /// <param name="sideA"></param>
         /// <param name="sideB"></param>
         /// <param name="sideC"></param>
-        public void Set(double sideA, double sideB, double sideC) 
+        public void Set(double sideA, double sideB, double sideC)
         {
             throw new NotValidateException("Too many parameters for Circle");
         }
@@ -160,9 +160,9 @@ namespace FigureLibrary
         /// </summary>
         /// <param name="radius">значение радиуса double[]</param>
         /// <returns>площадь круга double</returns>
-        public static double getArea(double[] radius)
+        public static double GetArea(double[] radius)
         {
-            return getArea(radius[0]);
+            return GetArea(radius[0]);
         }
 
         /// <summary>
@@ -170,12 +170,14 @@ namespace FigureLibrary
         /// </summary>
         /// <param name="radius">значение радиуса double</param>
         /// <returns>площадь круга double</returns>
-        public static double getArea(double radius)
+        public static double GetArea(double radius)
         {
             if (CircleValidate(radius))
             {
                 return AreaCalculate(radius);
-            } else {
+            }
+            else
+            {
                 return 0;
             }
         }

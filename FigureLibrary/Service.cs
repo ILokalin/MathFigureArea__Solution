@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FigureLibrary
+﻿namespace FigureLibrary
 {
     public class Service
     {
@@ -20,7 +16,7 @@ namespace FigureLibrary
 
             while (left < right)
             {
-                for (int i = left; i < right; i++ )
+                for (int i = left; i < right; i++)
                 {
                     if (sortArray[i] > sortArray[i + 1])
                     {
@@ -31,7 +27,7 @@ namespace FigureLibrary
 
                 for (int i = right; i > left; i--)
                 {
-                    if (sortArray[i-1] > sortArray[i])
+                    if (sortArray[i - 1] > sortArray[i])
                     {
                         Swap(sortArray, i, i - 1);
                     }
