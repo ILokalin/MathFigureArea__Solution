@@ -172,7 +172,12 @@ namespace FigureLibraryTest
 
             figureB.Set(4, 5, 3);
             result = figureA.Equals(figureB);
-            Assert.AreEqual(result, false, "These triangles have been is equal");
+            Assert.AreEqual(result, false, "These triangles have been is not equal");
+
+            figureA.Set(4, 6, 7);
+            figureB.Set(6, 4, 7);
+            result = figureA.Equals(figureB);
+            Assert.AreEqual(result, true, "These triangles have been is equal");
         }
     }
 }

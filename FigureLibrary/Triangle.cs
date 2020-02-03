@@ -269,9 +269,17 @@ namespace FigureLibrary
                 return false;
             } else {
                 Triangle triangle = (Triangle)obj;
-                IStructuralEquatable testA = this.FigureSides;
 
-                return testA.Equals(triangle.FigureSides, StructuralComparisons.StructuralEqualityComparer);
+                List<double> thisSides = sidesToList(this.FigureSides);
+                List<double> objSides = sidesToList(triangle.FigureSides);
+
+                thisSides.Sort();
+                objSides.Sort();
+
+                IStructuralEquatable testA = thisSides.ToArray();
+                double[] testB = objSides.ToArray();
+
+                return testA.Equals(testB, StructuralComparisons.StructuralEqualityComparer);
             }
         }
 
