@@ -1,7 +1,13 @@
 # Library for calculating the area of a figure
 
 **Библиотека, которая умеет вычислять площадь круга по радиусу и треугольника по трем сторонам**
-Реализация на C# с применением шаблона Factory для возможности автоматического определения типа фигуры при создании объекта.
+Реализация на C# с применением шаблона Factory для возможности автоматического определения типа фигуры при создании объекта. 
+
+Поддерживается работа с фигурами:
+- через фабрику, создавая объект в соответствии с входными парматерами (одно значение - окружность, три значения - треугольник);
+- объявлением объекта соответствующего типа используя классы напрямую (Circle и Triangle);
+- при помощи методов класса;
+
 
 ## Установка и запуск проекта
 Для запуска проекта необходимо установоленный **Visual Studio**
@@ -49,6 +55,36 @@
 Сравнение объектов IFigure:<br>
 'bool figureA.Equals(figureB)' - сравнение типа и соответствие размеров. Если фигуры одинакового типа и размеры их соответствуют, возвращает `true`.
 
+**Пример использования**
+
+`
+	List<double[]> figureList = new List<double[]>();
+	
+	IFigureFactory figureFactory = new FigureFactory();
+	
+	figureList.Add(new double[] { 5 });
+	figureList.Add(new double[] { 2 });
+	figureList.Add(new double[] { 7 });
+	figureList.Add(new double[] { 13, 5, 14 });
+	figureList.Add(new double[] { 5, 5, 5 });
+	figureList.Add(new double[] { 7, 3, 9 });
+	
+	figureList.ForEach(delegate (double[] figureParams)
+	{
+	    IFigure figure = figureFactory.CreateFigure(figureParams);
+		Console.WriteLn(figure.ToSting());
+	});
+
+//Console will display
+//circle	
+//circle
+//circle
+//triangle
+//triangle
+//triangle
+`
+
+
 ### Работа с классом Circle()
 
 **Конструктор Circle**<br>
@@ -87,10 +123,10 @@
 **Использование статических методов класса Circle. Методы недоступны при работе с объектами через интерфейс IFigure.**
 
 Расчет площади используя числовую переменную для задания радиуса:<br>
-`double area = Circle.gerArea(double radius);`
+`double area = Circle.GerArea(double radius);`
 
 Массив для входных параметров (принимается 0 индекс массива в качестве радиуса):<br>
-`double area = Circle.getArea(double[] radius);`
+`double area = Circle.GetArea(double[] radius);`
 
 Сравнение объектов по размеру площади:<br> 
 `bool circleA > cyrcleB`<br> 
@@ -142,10 +178,10 @@ FigureSides<double[]> - { get; set; } значение сторон фигуры
 **Использование статических методов класса Triangl. Методы не доступны при работе с объектами через интерфейс IFigure.**
 
 Расчет площади используя числовые переменные для задания сторон:<br>
-`double area =Triangl.gerArea(double sideA, double sideB, double sideC);`
+`double area =Triangl.GerArea(double sideA, double sideB, double sideC);`
 
 Массив для входных параметров:<br>
-`double area = Triangl.getArea(double[] sides);`
+`double area = Triangl.GetArea(double[] sides);`
 
 Сравнение объектов по размеру площади:<br> 
 `bool triangleA > triangleB`<br> 
@@ -160,6 +196,9 @@ FigureSides<double[]> - { get; set; } значение сторон фигуры
 
 
 
-## Описание
-Диаграмма классов
+## Проектная часть
+Основная структура проекта представлена на диаграмме классов. Классы для фигур наследуют единый интерфейс для совместимости. Фабрика фигур позволяет объявлять объекты автоматически определяя их тип.<br>
 ![class diagram](https://i.ibb.co/0CYCsSW/Untitled-Diagram-4.jpg)
+
+Базовая последовательноcть использования методов для объекта, при создании фигуры через конструктор и расчета площади через статические медотды класса.<br>
+![Sequence diagram](https://i.ibb.co/ctLDZPf/Untitled-Diagram-7.jpg)
