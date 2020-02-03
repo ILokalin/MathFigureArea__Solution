@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
-using System.Text;
-using System.Linq;
+
 
 namespace FigureLibrary
 {
@@ -40,13 +38,14 @@ namespace FigureLibrary
             get { return figureSides; }
             set
             {
-                if (value != figureSides)
+                double[] triangleSides = (double[])value.Clone();
+
+                if (triangleSides != figureSides)
                 {
-                    List<double> sideList = sidesToList(value);
-                    if (TriangleValidate(sideList))
+                    if (TriangleValidate(triangleSides))
                     {
-                        figureSides = value;
-                        area = AreaCalculate(sideList);
+                        figureSides = triangleSides;
+                        area = AreaCalculate(triangleSides);
                     }
                 }
             }
@@ -69,14 +68,8 @@ namespace FigureLibrary
         /// <param name="radius">значение радиуса double[]</param>
         public Triangle(double[] sides) 
         {
-            List<double> sideList = sidesToList(sides);
-
-            if (TriangleValidate(sideList))
-            {
-                figureSides = sides;
-                Type = "triangle";
-                area = AreaCalculate(sideList);
-            }
+            FigureSides = sides;
+            Type = "triangle";
         }
 
         /// <summary>
@@ -125,14 +118,7 @@ namespace FigureLibrary
         /// <returns></returns>
         public double UpdateArea(double[] side)
         {
-            List<double> sideList = sidesToList(side);
-
-            if (TriangleValidate(sideList))
-            {
-                figureSides = side;
-                area = AreaCalculate(sideList);
-            }
-
+            FigureSides = side;
             return area;
         }
 
@@ -167,10 +153,11 @@ namespace FigureLibrary
         /// <returns>площадь треугольника double</returns>
         public static double getArea(double[] sides)
         {
-            List<double> sideList = sidesToList(sides);
-            if (TriangleValidate(sideList))
+            double[] triangleSedes = (double[])sides.Clone();
+
+            if (TriangleValidate(triangleSedes))
             {
-                return AreaCalculate(sideList);
+                return AreaCalculate(triangleSedes);
             } else
             {
                 return 0;
@@ -179,10 +166,7 @@ namespace FigureLibrary
 
         public bool Rectangular()
         {
-            List<double> sideList = sidesToList(figureSides);
-            sideList.Sort();
-
-            if (sideList[2] == Math.Sqrt(Math.Pow(sideList[0], 2) + Math.Pow(sideList[1], 2)))
+            if (figureSides[2] == Math.Sqrt(Math.Pow(figureSides[0], 2) + Math.Pow(figureSides[1], 2)))
             {
                 return true;
             } else
@@ -269,17 +253,11 @@ namespace FigureLibrary
                 return false;
             } else {
                 Triangle triangle = (Triangle)obj;
-                
-                List<double> thisSides = sidesToList(this.FigureSides);
-                List<double> objSides = sidesToList(triangle.FigureSides);
 
-                thisSides.Sort();
-                objSides.Sort();
+                IStructuralEquatable testThis = this.figureSides;
+                double[] testObj = triangle.figureSides;
 
-                IStructuralEquatable testA = thisSides.ToArray();
-                double[] testB = objSides.ToArray();
-
-                return testA.Equals(testB, StructuralComparisons.StructuralEqualityComparer);
+                return testThis.Equals(testObj, StructuralComparisons.StructuralEqualityComparer);
             }
         }
 
@@ -302,26 +280,10 @@ namespace FigureLibrary
         /// </summary>
         /// <param name="sides">список сторон треугольника List of double</param>
         /// <returns>площадь треугольника double</returns>
-        private static double AreaCalculate(List<double> sides)
+        private static double AreaCalculate(double[] sides)
         {
-            double halfP = sides.Sum() / 2;
+            double halfP = Service.arraySum(sides) / 2;
             return Math.Sqrt(halfP * (halfP - sides[0]) * (halfP - sides[1]) * (halfP - sides[2]));
-        }
-
-        /// <summary>
-        /// Преобразование массива в список
-        /// </summary>
-        /// <param name="sides">массив сторон треугольника array of double</param>
-        /// <returns>список сторон List of double</returns>
-        private static List<double> sidesToList(double[] sides)
-        {
-            List<double> sidesList = new List<double>();
-            foreach(var side in sides)
-            {
-                sidesList.Add(side);
-            }
-
-            return sidesList;
         }
 
         /// <summary>
@@ -333,28 +295,28 @@ namespace FigureLibrary
         /// </summary>
         /// <param name="radius">значение радиуса double</param>
         /// <returns>true - треугольник; исключение - при несоответствии</returns>
-        private static bool TriangleValidate(List<double> sides)
+        private static bool TriangleValidate(double[] sides)
         {
-            double sumOfSides = sides.Sum();
-            sides.Sort();
+            double sumOfSides = Service.arraySum(sides);
+            Service.arraySort(sides);
 
-            if (sides.Count < 3)
+            if (sides.Length < 3)
             {
                 throw new NotValidateException("Too few parameters for sides");
             }
 
-            if (sides.Count > 3)
+            if (sides.Length > 3)
             {
                 throw new NotValidateException("Too many parameters for sides"); 
             }
 
-            sides.ForEach(delegate (double side)
+            foreach (var side in sides)
             {
                 if (side <= 0 & sumOfSides != 0)
                 {
                     throw new NotValidateException("One of the side has bad size (0 or negative)");
                 }
-            });
+            }
 
             if (sides[2] > sides[1] + sides[0] & sumOfSides != 0)
             {
